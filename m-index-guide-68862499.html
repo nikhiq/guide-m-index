@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>雨燕直播 · 常来常新</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background: #f6fafc;
+            color: #1f3a3f;
+            line-height: 1.6;
+            padding: 0 1rem 3.5rem;
+        }
+
+        .page {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* 顶部导航 — 轻量简约 */
+        .nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1.2rem 0 0.8rem;
+            border-bottom: 1px solid #d4e7ed;
+            flex-wrap: wrap;
+        }
+
+        .nav-brand {
+            font-weight: 600;
+            font-size: 1.2rem;
+            letter-spacing: 0.02em;
+            color: #0f5d6b;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1.8rem;
+            list-style: none;
+            font-size: 0.94rem;
+            color: #2c6d7a;
+            flex-wrap: wrap;
+        }
+
+        .nav-links li {
+            cursor: default;
+            position: relative;
+        }
+
+        .nav-links li a {
+            color: #0f5d6b;
+            text-decoration: none;
+            font-weight: 500;
+            padding-bottom: 2px;
+            transition: border 0.15s;
+            border-bottom: 2px solid transparent;
+        }
+
+        .nav-links li a:hover {
+            border-bottom-color: #38b2ac;
+        }
+
+        .nav-links .highlight-link a {
+            background: #e0f0f0;
+            padding: 0.2rem 1rem;
+            border-radius: 24px;
+            border-bottom: none;
+            color: #0f5d6b;
+            font-weight: 600;
+        }
+
+        .nav-links .highlight-link a:hover {
+            background: #cbe4e4;
+        }
+
+        /* hero 区域 */
+        .hero {
+            margin: 2.8rem 0 2.4rem;
+            text-align: left;
+        }
+
+        .hero h1 {
+            font-size: 1.9rem;
+            font-weight: 600;
+            color: #0b474f;
+            letter-spacing: -0.01em;
+            line-height: 1.2;
+            max-width: 640px;
+        }
+
+        .hero .subhead {
+            margin-top: 0.8rem;
+            font-size: 1.05rem;
+            color: #306d79;
+            background: #e2f0f1;
+            display: inline-block;
+            padding: 0.4rem 1.2rem;
+            border-radius: 40px;
+        }
+
+        .hero p {
+            margin-top: 1.2rem;
+            font-size: 1rem;
+            max-width: 640px;
+            color: #2a5d66;
+        }
+
+        /* 介绍卡片 + 网格 */
+        .intro-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.2rem;
+            margin: 2.5rem 0;
+        }
+
+        .intro-card {
+            background: #ffffff;
+            border-radius: 24px;
+            padding: 1.4rem 1.2rem;
+            box-shadow: 0 4px 12px rgba(56, 178, 172, 0.08);
+            border: 1px solid #d9e9ed;
+            transition: box-shadow 0.2s;
+        }
+
+        .intro-card:hover {
+            box-shadow: 0 6px 16px rgba(15, 93, 107, 0.10);
+        }
+
+        .intro-card .icon-place {
+            display: inline-block;
+            background: #ddf1f2;
+            width: 2.2rem;
+            height: 2.2rem;
+            border-radius: 18px;
+            text-align: center;
+            line-height: 2.2rem;
+            font-size: 1.2rem;
+            margin-bottom: 0.6rem;
+            color: #0f5d6b;
+        }
+
+        .intro-card h3 {
+            font-size: 1.05rem;
+            margin-bottom: 0.3rem;
+            color: #0b474f;
+            font-weight: 600;
+        }
+
+        .intro-card p {
+            font-size: 0.92rem;
+            color: #2e5f68;
+        }
+
+        /* 场景模块 — 三列卡片 */
+        .scenes {
+            margin: 2.8rem 0 2.4rem;
+        }
+
+        .scenes h2 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #0b474f;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            margin-bottom: 1.2rem;
+        }
+
+        .scene-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .scene-item {
+            background: white;
+            border-radius: 20px;
+            padding: 1.2rem 0.9rem 1rem;
+            border: 1px solid #d4e7ed;
+            box-shadow: 0 2px 6px rgba(56, 178, 172, 0.04);
+        }
+
+        .scene-item .emoji-badge {
+            font-size: 1.6rem;
+            line-height: 1;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .scene-item h4 {
+            font-weight: 600;
+            font-size: 1rem;
+            color: #0b474f;
+            margin-bottom: 0.2rem;
+        }
+
+        .scene-item p {
+            font-size: 0.88rem;
+            color: #2e5f68;
+            line-height: 1.5;
+        }
+
+        /* 常见说明 / q&a 摘要 */
+        .faq-note {
+            background: #eaf5f5;
+            border-radius: 24px;
+            padding: 1.8rem 1.6rem;
+            margin: 2.4rem 0 2.2rem;
+            border-left: 4px solid #38b2ac;
+        }
+
+        .faq-note h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #094148;
+            margin-bottom: 0.6rem;
+        }
+
+        .faq-note ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .faq-note li {
+            margin-bottom: 0.7rem;
+            padding-left: 1.4rem;
+            position: relative;
+            font-size: 0.95rem;
+            color: #1d4f58;
+        }
+
+        .faq-note li::before {
+            content: "•";
+            color: #38b2ac;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        .faq-note a {
+            color: #0f5d6b;
+            text-decoration: underline;
+            text-underline-offset: 3px;
+            text-decoration-color: #8ac2c4;
+            font-weight: 500;
+        }
+
+        .faq-note a:hover {
+            text-decoration-color: #0f5d6b;
+        }
+
+        /* 收藏/关注提醒 */
+        .bookmark-reminder {
+            background: white;
+            border-radius: 60px;
+            padding: 1.1rem 1.6rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            border: 1px solid #cbe4e4;
+            margin-bottom: 2.2rem;
+            font-size: 0.95rem;
+            color: #1a555f;
+            box-shadow: 0 2px 8px rgba(15, 93, 107, 0.04);
+            width: auto;
+            flex-wrap: wrap;
+        }
+
+        .bookmark-reminder span {
+            background: #38b2ac10;
+            padding: 0.2rem 0.8rem;
+            border-radius: 30px;
+            font-weight: 500;
+            color: #0f5d6b;
+        }
+
+        .bookmark-reminder a {
+            color: #0f5d6b;
+            text-decoration: underline;
+            text-underline-offset: 2px;
+            font-weight: 600;
+        }
+
+        /* 响应式设计 */
+        @media (max-width: 640px) {
+            body {
+                padding: 0 0.8rem 2.5rem;
+            }
+
+            .nav {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.3rem;
+                padding-bottom: 0.6rem;
+            }
+
+            .nav-links {
+                gap: 1rem;
+                font-size: 0.88rem;
+                margin-top: 0.3rem;
+            }
+
+            .hero h1 {
+                font-size: 1.5rem;
+            }
+
+            .hero .subhead {
+                font-size: 0.9rem;
+            }
+
+            .intro-grid {
+                grid-template-columns: 1fr;
+                gap: 0.9rem;
+            }
+
+            .scene-grid {
+                grid-template-columns: 1fr;
+                gap: 0.9rem;
+            }
+
+            .bookmark-reminder {
+                width: 100%;
+                border-radius: 28px;
+                justify-content: center;
+                text-align: center;
+                padding: 1rem 1rem;
+            }
+
+            .faq-note {
+                padding: 1.2rem 1rem;
+            }
+        }
+
+        @media (min-width: 641px) and (max-width: 860px) {
+            .scene-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        footer {
+            margin-top: 2.8rem;
+            text-align: center;
+            font-size: 0.82rem;
+            color: #56858f;
+            border-top: 1px solid #d9e9ed;
+            padding-top: 1.6rem;
+        }
+
+        footer a {
+            color: #0f5d6b;
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1px dotted #82b6bc;
+        }
+    </style>
+</head>
+<body>
+<div class="page">
+
+    <!-- 导航 -->
+    <nav class="nav">
+        <span class="nav-brand">⛅ 雨燕·常访</span>
+        <ul class="nav-links">
+            <li><a href="#">首页</a></li>
+            <li><a href="#">场景</a></li>
+            <li><a href="#">说明</a></li>
+            <li class="highlight-link"><a href="https://m-index-yuyan.com">雨燕直播</a></li>
+        </ul>
+    </nav>
+
+    <!-- hero 再次访问的角度 -->
+    <div class="hero">
+        <h1>再次打开，依旧熟悉</h1>
+        <div class="subhead">📌 收藏 · 常回 · 持续关注</div>
+        <p>
+            不管是隔了几天还是几周，再次回到 <a href="https://m-index-yuyan.com" style="color:#0f5d6b; text-decoration: underline; text-underline-offset: 3px;">雨燕直播</a>，
+            界面与节奏始终一致。无需重新适应，直接延续上次的浏览习惯。
+            对经常光顾的用户来说，这种稳定感本身就是一种效率。
+        </p>
+    </div>
+
+    <!-- 介绍卡片 — 网格2列 -->
+    <div class="intro-grid">
+        <div class="intro-card">
+            <div class="icon-place">📋</div>
+            <h3>访问记录延续</h3>
+            <p>再次访问时，历史浏览与常用分类保持原样，减少重复寻找的麻烦。</p>
+        </div>
+        <div class="intro-card">
+            <div class="icon-place">🔖</div>
+            <h3>收藏即快捷</h3>
+            <p>将页面加入浏览器书签或主屏幕，下次即可一键进入，不必搜索。</p>
+        </div>
+        <div class="intro-card">
+            <div class="icon-place">🔄</div>
+            <h3>内容持续更新</h3>
+            <p>长期关注某个方向时，页面会围绕稳定模块做增量调整，不会突然大变样。</p>
+        </div>
+        <div class="intro-card">
+            <div class="icon-place">📱</div>
+            <h3>移动端顺手</h3>
+            <p>无论手机还是平板，卡片与文字自动适配，单手操作也轻松。</p>
+        </div>
+    </div>
+
+    <!-- 三个场景模块 -->
+    <div class="scenes">
+        <h2>🧩 三个典型使用场景</h2>
+        <div class="scene-grid">
+            <div class="scene-item">
+                <span class="emoji-badge">🏠</span>
+                <h4>日常回访</h4>
+                <p>工作间隙或睡前，习惯性打开看看熟悉版面，不需要重新摸索。</p>
+            </div>
+            <div class="scene-item">
+                <span class="emoji-badge">📌</span>
+                <h4>专题关注</h4>
+                <p>对特定内容持续留意，通过收藏夹直达，每次都能看到新进展。</p>
+            </div>
+            <div class="scene-item">
+                <span class="emoji-badge">🧭</span>
+                <h4>轻量导航</h4>
+                <p>把这里当作起点，快速跳转至需要的分区，节省查找时间。</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 收藏/关注 提示条 -->
+    <div class="bookmark-reminder">
+        <span>⭐ 再次访问小建议</span>
+        将 <a href="https://m-index-yuyan.com">雨燕直播</a> 添加至浏览器书签或桌面，
+        下次就能直接进入，不必重新输入地址。
+    </div>
+
+    <!-- 常见说明 Q&A 摘要 -->
+    <div class="faq-note">
+        <h3>📖 常见说明摘要</h3>
+        <ul>
+            <li><strong>页面定位：</strong>轻量导航式介绍页，方便新老朋友快速了解 <a href="https://m-index-yuyan.com">雨燕直播</a> 的访问节奏。</li>
+            <li><strong>为什么强调“再次访问”：</strong>多次使用后，一致的结构比花样翻新更重要，减少认知负担。</li>
+            <li><strong>移动端适配：</strong>卡片布局及响应式设计覆盖手机与平板，字号和间距经过调整。</li>
+            <li><strong>变化与稳定：</strong>每次打开页面，整体框架与核心链接不变，但段落、卡片细节会略有不同，保持新鲜感又不迷失。</li>
+        </ul>
+        <p style="margin-top: 0.8rem; font-size: 0.9rem; color: #1f535c;">
+            💡 如需深入了解，可直接访问 <a href="https://m-index-yuyan.com">雨燕直播</a>。
+        </p>
+    </div>
+
+    <!-- footer -->
+    <footer>
+        雨燕直播 · 常访页 · 内容仅作示意 &nbsp;|&nbsp; <a href="https://m-index-yuyan.com">雨燕直播</a>
+    </footer>
+</div>
+</body>
+</html>
