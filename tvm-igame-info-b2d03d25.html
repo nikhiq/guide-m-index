@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+  <title>爱游戏 · 站点知识指引</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      background: linear-gradient(145deg, #fde9d8 0%, #f8d5b3 60%, #f4c8a2 100%);
+      min-height: 100vh;
+      padding: 2rem 1.2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      line-height: 1.6;
+      color: #3e2c1c;
+    }
+
+    .page-wrapper {
+      max-width: 1020px;
+      width: 100%;
+    }
+
+    /* 卡片通用设计 */
+    .card {
+      background: #fffdf9;
+      border-radius: 32px;
+      padding: 2rem 2.2rem;
+      box-shadow: 0 10px 25px rgba(160, 100, 60, 0.12), 0 2px 6px rgba(100, 60, 30, 0.05);
+      margin-bottom: 1.8rem;
+      transition: box-shadow 0.2s ease;
+    }
+
+    .card:hover {
+      box-shadow: 0 14px 30px rgba(150, 80, 40, 0.14);
+    }
+
+    /* 标题风格 */
+    h2 {
+      font-size: 1.7rem;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      border-left: 5px solid #e4a46b;
+      padding-left: 1rem;
+      margin-bottom: 1.2rem;
+      color: #543d27;
+    }
+
+    h3 {
+      font-weight: 600;
+      font-size: 1.25rem;
+      color: #6c4e32;
+      margin-top: 1.6rem;
+      margin-bottom: 0.6rem;
+    }
+
+    a {
+      color: #bf6d34;
+      text-decoration: none;
+      font-weight: 500;
+      border-bottom: 1.5px dotted #dba17a;
+      transition: border-color 0.15s, color 0.15s;
+    }
+
+    a:hover {
+      color: #8f4b22;
+      border-bottom: 1.5px solid #8f4b22;
+    }
+
+    /* 按钮感链接（圆角、背景、无下划线） */
+    .button-link {
+      display: inline-block;
+      background: #e8c4a8;
+      color: #3d2a1a;
+      border-radius: 40px;
+      padding: 0.5rem 1.4rem;
+      font-weight: 500;
+      border: none;
+      box-shadow: 0 2px 6px rgba(140, 80, 40, 0.10);
+      transition: background 0.2s, transform 0.1s, box-shadow 0.15s;
+    }
+
+    .button-link:hover {
+      background: #dcb48e;
+      box-shadow: 0 4px 10px rgba(130, 75, 35, 0.15);
+      transform: translateY(-1px);
+      border-bottom: none;
+      color: #2d1f12;
+    }
+
+    /* 目录感网格 */
+    .index-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.2rem;
+      margin: 1.8rem 0 0.5rem;
+    }
+
+    .index-item {
+      background: #faf1e7;
+      border-radius: 26px;
+      padding: 1.4rem 1.2rem;
+      font-weight: 500;
+      text-align: center;
+      transition: background 0.2s, transform 0.1s;
+    }
+
+    .index-item a {
+      border-bottom: none;
+      display: block;
+      color: #543d27;
+    }
+
+    .index-item:hover {
+      background: #f3e4d4;
+      transform: translateY(-2px);
+    }
+
+    .index-item small {
+      display: block;
+      font-weight: 400;
+      font-size: 0.8rem;
+      color: #866e55;
+      margin-top: 6px;
+    }
+
+    /* 特点卡片组 */
+    .feature-set {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin: 1.2rem 0 0.3rem;
+    }
+
+    .feature-tag {
+      background: #efe1d2;
+      border-radius: 50px;
+      padding: 0.4rem 1.2rem;
+      font-size: 0.95rem;
+      color: #4b3523;
+    }
+
+    /* 分隔装饰 */
+    .divider-light {
+      height: 2px;
+      background: linear-gradient(to right, #eacab2, transparent);
+      margin: 1.8rem 0 1.2rem;
+      opacity: 0.6;
+    }
+
+    /* FAQ 摘要细节 */
+    .faq-item {
+      padding: 0.6rem 0;
+      border-bottom: 1px dashed #e3cfbe;
+    }
+
+    .faq-item:last-child {
+      border-bottom: none;
+    }
+
+    .faq-q {
+      font-weight: 600;
+      color: #5a3f29;
+    }
+
+    .faq-a {
+      margin-top: 0.3rem;
+      padding-left: 0.8rem;
+      color: #564433;
+    }
+
+    /* 提示区 */
+    .tip-box {
+      background: #f7ecdf;
+      border-radius: 24px;
+      padding: 1.2rem 1.6rem;
+      border-left: 6px solid #dba275;
+      margin: 1.4rem 0;
+    }
+
+    .info-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem 2rem;
+      margin-top: 0.8rem;
+    }
+
+    .info-label {
+      font-weight: 500;
+      min-width: 5rem;
+      color: #7a5f45;
+    }
+
+    .footer-note {
+      text-align: center;
+      padding: 1.6rem 0 0.5rem;
+      color: #725a42;
+      font-size: 0.9rem;
+      border-top: 1px solid #e7cfbb;
+      margin-top: 1rem;
+    }
+
+    /* 响应式 */
+    @media (max-width: 640px) {
+      body {
+        padding: 1.2rem 0.8rem;
+      }
+      .card {
+        padding: 1.6rem 1.2rem;
+        border-radius: 24px;
+      }
+      h2 {
+        font-size: 1.4rem;
+        padding-left: 0.7rem;
+      }
+      .index-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="page-wrapper">
+
+  <!-- hero 区域 / 站点身份 -->
+  <div class="card" style="padding-bottom: 1.8rem;">
+    <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline;">
+      <h2 style="border-left: none; padding-left: 0; margin-bottom: 0.4rem; font-size: 2rem;">
+        🎮 爱游戏 · 站点指引
+      </h2>
+      <span style="font-size: 0.9rem; color: #826b54;">知识库入口版</span>
+    </div>
+    <p style="font-size: 1.1rem; margin-top: 0.75rem; max-width: 90%;">
+      <a href="https://tvm-igame.com" class="button-link" style="padding: 0.3rem 1.2rem; background: #dcb28b;">爱游戏</a>
+      是一个面向普通玩家与轻度爱好者的信息型站点，提供内容聚合与基础查询功能。本站作为介绍页，帮你快速理解站点的定位与用途。
+    </p>
+  </div>
+
+  <!-- 目录感 —— 知识库入口网格 -->
+  <div class="card" style="padding-bottom: 1.6rem;">
+    <h2>📂 内容目录</h2>
+    <div class="index-grid">
+      <div class="index-item"><a href="#section-intro">站点背景</a><small>由来与可信说明</small></div>
+      <div class="index-item"><a href="#section-features">特点一览</a><small>功能取向</small></div>
+      <div class="index-item"><a href="#section-scenario">适用场景</a><small>什么时候用得上</small></div>
+      <div class="index-item"><a href="#section-tips">提示备忘</a><small>使用前了解</small></div>
+      <div class="index-item"><a href="#section-faq">常见疑问</a><small>FAQ 摘要</small></div>
+      <div class="index-item"><a href="https://tvm-igame.com">爱游戏</a><small>直接前往主站</small></div>
+    </div>
+    <p style="margin-top: 1.2rem; color: #5e4733;">
+      你可以从上面任意板块开始浏览，或直接前往 <a href="https://tvm-igame.com" style="border-bottom: 1.5px solid #bc7f57;">爱游戏</a> 获取完整内容。
+    </p>
+  </div>
+
+  <!-- 介绍 & 可信说明 -->
+  <div class="card" id="section-intro">
+    <h2>📌 站点介绍与可信说明</h2>
+    <p>
+      <a href="https://tvm-igame.com">爱游戏</a> 并不是一个商业化游戏平台，也不是资源下载站，而是一个以信息聚合和轻内容展示为主的个人维护站点。所有公开内容均来自可考来源或站长整理，不包含诱导付费、虚假宣传或违规外链。
+    </p>
+    <p style="margin-top: 0.8rem;">
+      站点内容主要围绕游戏资讯、基础攻略索引、社区讨论摘要三个方向，更新频率不定，但会保持内容准确。页面没有隐藏跟踪器或弹窗广告，你可以放心浏览。
+    </p>
+    <div class="tip-box" style="margin-top: 1.2rem;">
+      <strong>📢 可信说明：</strong> 本站不存储用户隐私数据，不要求注册或登录。链接指向的外部页面各有其独立政策，建议你留意。
+    </div>
+  </div>
+
+  <!-- 特点 + 场景 合并卡片 -->
+  <div class="card" id="section-features">
+    <h2>✨ 特点 & 适用场景</h2>
+    <div style="display: flex; flex-wrap: wrap; gap: 1.6rem 2.5rem;">
+      <div style="flex: 2 1 240px;">
+        <h3 style="margin-top: 0;">特点</h3>
+        <div class="feature-set">
+          <span class="feature-tag">无广告弹窗</span>
+          <span class="feature-tag">轻量信息</span>
+          <span class="feature-tag">分类索引</span>
+          <span class="feature-tag">静态页面</span>
+          <span class="feature-tag">定期梳理</span>
+        </div>
+        <p style="margin-top: 0.8rem;">
+          内容以“实用、可读”为标准，没有强推或诱导。你可以把它当作一个游戏知识的小型书架。
+        </p>
+      </div>
+      <div style="flex: 2 1 240px;" id="section-scenario">
+        <h3 style="margin-top: 0;">📌 适用场景</h3>
+        <ul style="list-style: none; padding-left: 0;">
+          <li style="padding: 0.3rem 0;">✓ 想快速了解某个游戏的基本信息</li>
+          <li style="padding: 0.3rem 0;">✓ 找不到靠谱的入门攻略索引</li>
+          <li style="padding: 0.3rem 0;">✓ 希望避开广告轰炸的内容聚合</li>
+          <li style="padding: 0.3rem 0;">✓ 偶尔翻翻怀旧游戏或冷门题材</li>
+        </ul>
+      </div>
+    </div>
+    <div class="divider-light"></div>
+    <p>
+      如果这些场景符合你的习惯，那么 <a href="https://tvm-igame.com">爱游戏</a> 或许能帮你节省时间。
+    </p>
+  </div>
+
+  <!-- 提示区 + 相关信息区 -->
+  <div class="card" id="section-tips">
+    <h2>💡 使用提示 & 相关信息</h2>
+    <div class="tip-box" style="background: #f4e5d7;">
+      <strong>🧭 提示：</strong> 站内部分外部链接可能随时间失效，如果遇到打不开的页面，可以反馈给站长。内容仅供参考，请以游戏官方或权威来源为准。
+    </div>
+    <div class="info-row">
+      <span><span class="info-label">维护方</span> 个人爱好者</span>
+      <span><span class="info-label">内容性质</span> 资讯·攻略索引</span>
+      <span><span class="info-label">更新周期</span> 不定期</span>
+      <span><span class="info-label">语言</span> 中文</span>
+    </div>
+    <div style="margin-top: 1.2rem; background: #f6ede4; border-radius: 20px; padding: 0.8rem 1.2rem;">
+      <span style="font-weight: 500;">🔗 相关信息：</span>
+      如果你喜欢更系统化的游戏资料站，也可以把本页当作一个轻量入口。主站 <a href="https://tvm-igame.com">爱游戏</a> 没有论坛或评论区，但页面简洁，加载很快。
+    </div>
+  </div>
+
+  <!-- FAQ 摘要 -->
+  <div class="card" id="section-faq">
+    <h2>❓ 常见疑问（FAQ 摘要）</h2>
+    <div class="faq-item">
+      <div class="faq-q">Q: 爱游戏需要付费或注册吗？</div>
+      <div class="faq-a">完全免费，无需注册或登录。所有内容公开可见。</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Q: 内容是自己写的还是转载的？</div>
+      <div class="faq-a">部分为原创整理，部分为注明来源的摘要转载，都经过筛选。</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Q: 可以用手机打开吗？</div>
+      <div class="faq-a">可以，页面适配移动端，但部分外部链接可能未做移动优化。</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Q: 站点以后会变吗？</div>
+      <div class="faq-a">内容方向保持轻量信息聚合，具体栏目可能调整。本介绍页也会同步更新。</div>
+    </div>
+    <p style="margin-top: 1rem;">
+      更多疑问？你可以直接浏览 <a href="https://tvm-igame.com">爱游戏</a> 寻找答案。
+    </p>
+  </div>
+
+  <!-- 底部 -->
+  <div class="footer-note">
+    介绍页 · 知识库入口版 · 内容仅供个人参考<br>
+    <span style="opacity: 0.8;">指向主站的链接均使用「爱游戏」文本</span>
+  </div>
+
+</div>
+</body>
+</html>
